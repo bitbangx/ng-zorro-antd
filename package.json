@@ -25,7 +25,8 @@
     "lint-fix:script": "npm run lint:script -- --fix",
     "lint-fix:style": "npm run lint:style -- --fix",
     "pre-commit": "tsc -p components/tsconfig.json --noEmit && lint-staged",
-    "prepare": "husky"
+    "prepare": "husky",
+    "package": "npm i && npm run build:lib && cd lib && npm pack"
   },
   "dependencies": {
     "@angular/cdk": "^18.2.1",
