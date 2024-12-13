@@ -81,6 +81,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 | `[nzValue]`         | The value passed to ngModel of nz-select                                                                                   | `any `              | -       |
 | `[nzKey]`           | Should be passed when typeof nzValue - Object. Key will be used for performance optimizations                              | `string \| number ` | -       |
 | `[nzHide]`          | Whether hide the option in the option list                                                                                 | `boolean`           | `false` |
+| `[nzDeletable]` | Whether hide the option in the option list | `boolean` | `true` |
 | `[nzCustomContent]` | Whether custom nz-option content in drodown menu, the ng-content in nz-option will replace nzLabel when it was set to true | `boolean`           | `false` |
 
 ### nz-option-group:standalone

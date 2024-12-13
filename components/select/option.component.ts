@@ -46,6 +46,7 @@ export class NzOptionComponent implements OnChanges, OnInit {
   @Input() nzKey?: string | number;
   @Input({ transform: booleanAttribute }) nzDisabled = false;
   @Input({ transform: booleanAttribute }) nzHide = false;
+  @Input({ transform: booleanAttribute }) nzDeletable = false;
   @Input({ transform: booleanAttribute }) nzCustomContent = false;
 
   private nzOptionGroupComponent = inject(NzOptionGroupComponent, { optional: true });

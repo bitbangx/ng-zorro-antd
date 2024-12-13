@@ -353,7 +353,7 @@ export class NzSelectComponent implements ControlValueAccessor, OnInit, AfterCon
 
   updateListOfContainerItem(): void {
     let listOfContainerItem = this.listOfTagAndTemplateItem
-      .filter(item => !item.nzHide)
+      .filter(item => !item.nzHide && (item.nzDeletable !== false || !this.listOfValue.includes(item.nzValue)))
       .filter(item => {
         if (!this.nzServerSearch && this.searchValue) {
           return this.nzFilterOption(this.searchValue, item);
@@ -532,7 +532,11 @@ export class NzSelectComponent implements ControlValueAccessor, OnInit, AfterCon
   }
 
   onClearSelection(): void {
-    this.updateListOfValue([]);
+    this.updateListOfValue([
+      ...this.listOfValue.filter(value =>
+        this.listOfTopItem.find(item => item.nzValue === value && item.nzDeletable === false)
+      )
+    ]);
   }
 
   onClickOutside(event: MouseEvent): void {
@@ -781,13 +785,14 @@ export class NzSelectComponent implements ControlValueAccessor, OnInit, AfterCon
         )
         .subscribe(() => {
           const listOfOptionInterface = this.listOfNzOptionComponent.toArray().map(item => {
-            const { template, nzLabel, nzValue, nzKey, nzDisabled, nzHide, nzCustomContent, groupLabel } = item;
+            const { template, nzLabel, nzValue, nzKey, nzDisabled, nzHide, nzDeletable, nzCustomContent, groupLabel } = item;
             return {
               template,
               nzLabel,
               nzValue,
               nzDisabled,
               nzHide,
+              nzDeletable,
               nzCustomContent,
               groupLabel,
               nzTitle: this.getTitle(item.nzTitle, item.nzLabel),

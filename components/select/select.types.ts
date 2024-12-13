@@ -15,6 +15,7 @@ export interface NzSelectItemInterface {
   nzTitle?: string | number | null;
   nzDisabled?: boolean;
   nzHide?: boolean;
+  nzDeletable?: boolean;
   nzCustomContent?: boolean;
   groupLabel?: string | number | TemplateRef<NzSafeAny> | null;
   type?: string;

@@ -73,7 +73,7 @@ import { NzSelectItemInterface, NzSelectModeType, NzSelectTopControlItemType } f
             [label]="item.nzLabel"
             [disabled]="item.nzDisabled || disabled"
             [contentTemplateOutlet]="item.contentTemplateOutlet"
-            [deletable]="true"
+            [deletable]="item.nzDeletable ?? true"
             [contentTemplateOutletContext]="item.contentTemplateOutletContext"
             (delete)="onDeleteItem(item.contentTemplateOutletContext)"
           ></nz-select-item>
@@ -213,6 +213,7 @@ export class NzSelectTopControlComponent implements OnChanges, OnInit, OnDestroy
         nzLabel: o.nzLabel,
         nzValue: o.nzValue,
         nzDisabled: o.nzDisabled,
+        nzDeletable: o.nzDeletable,
         contentTemplateOutlet: this.customTemplate,
         contentTemplateOutletContext: o
       }));

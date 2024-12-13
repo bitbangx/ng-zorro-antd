@@ -10,7 +10,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
   imports: [FormsModule, NzIconModule, NzSelectModule],
   template: `
     <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select OS" [(ngModel)]="selectedValue">
-      <nz-option nzCustomContent nzLabel="Windows" nzValue="windows">
+      <nz-option nzCustomContent nzLabel="Windows" nzValue="windows" [nzDeletable]="false">
         <span nz-icon nzType="windows"></span>
         Windows
       </nz-option>
