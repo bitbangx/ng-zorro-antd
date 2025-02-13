@@ -54,6 +54,11 @@ const CSS_TRANSFORM_TIME = 150;
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
+    @if (titleTemplate) {
+      <div class="ant-tabs-title-content">
+        <ng-template [ngTemplateOutlet]="titleTemplate"></ng-template>
+      </div>
+    }
     <div
       class="ant-tabs-nav-wrap"
       [class.ant-tabs-nav-wrap-ping-left]="pingLeft"
@@ -71,15 +76,20 @@ const CSS_TRANSFORM_TIME = 150;
         role="tablist"
       >
         <ng-content></ng-content>
-        @if (showAddButton) {
-          <button
-            role="tab"
-            [attr.tabindex]="-1"
-            nz-tab-add-button
-            [addIcon]="addIcon"
-            (click)="addClicked.emit()"
-          ></button>
-        }
+        <div class="ant-tabs-nav-actions">
+          @if (showAddButton) {
+            <button
+              role="tab"
+              [attr.tabindex]="-1"
+              nz-tab-add-button
+              [addIcon]="addIcon"
+              (click)="addClicked.emit()"
+            ></button>
+          }
+          @if (actionsTemplate) {
+            <ng-template [ngTemplateOutlet]="actionsTemplate"></ng-template>
+          }
+        </div>
         <div nz-tabs-ink-bar [hidden]="hideBar" [position]="position" [animated]="inkBarAnimated"></div>
       </div>
     </div>
@@ -120,6 +130,8 @@ export class NzTabNavBarComponent implements AfterViewInit, AfterContentChecked,
   @Input({ transform: booleanAttribute }) hideBar: boolean = false;
   @Input() addIcon: string | TemplateRef<NzSafeAny> = 'plus';
   @Input() inkBarAnimated = true;
+  @Input() titleTemplate?: TemplateRef<void>;
+  @Input() actionsTemplate?: TemplateRef<void>;
   @Input() extraTemplate?: TemplateRef<void>;
 
   @Input()

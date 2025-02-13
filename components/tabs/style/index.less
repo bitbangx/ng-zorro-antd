@@ -78,24 +78,29 @@
       }
     }
 
-    .@{tab-prefix-cls}-nav-add {
-      min-width: @tabs-card-height;
-      margin-left: @tabs-card-gutter;
-      padding: 0 @padding-xs;
-      background: @tabs-card-head-background;
-      border: @border-width-base @border-style-base @border-color-split;
-      border-radius: @border-radius-base @border-radius-base 0 0;
-      outline: none;
-      cursor: pointer;
-      transition: all @animation-duration-slow @ease-in-out;
+    .@{tab-prefix-cls}-nav-actions {
+      display: flex;
+      gap: 2px;
 
-      &:hover {
-        color: @tabs-hover-color;
-      }
+      .@{tab-prefix-cls}-nav-add {
+        min-width: @tabs-card-height;
+        margin-left: @tabs-card-gutter;
+        padding: 0 @padding-xs;
+        background: @tabs-card-head-background;
+        border: @border-width-base @border-style-base @border-color-split;
+        border-radius: @border-radius-base @border-radius-base 0 0;
+        outline: none;
+        cursor: pointer;
+        transition: all @animation-duration-slow @ease-in-out;
 
-      &:active,
-      &:focus {
-        color: @tabs-active-color;
+        &:hover {
+          color: @tabs-hover-color;
+        }
+
+        &:active,
+        &:focus {
+          color: @tabs-active-color;
+        }
       }
     }
   }

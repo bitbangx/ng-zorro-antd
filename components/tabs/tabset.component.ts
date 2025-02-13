@@ -80,6 +80,8 @@ let nextId = 0;
         [addIcon]="nzAddIcon"
         [hideBar]="nzHideAll"
         [position]="position"
+        [titleTemplate]="nzTabBarTitleContent"
+        [actionsTemplate]="nzTabBarActionsContent"
         [extraTemplate]="nzTabBarExtraContent"
         (tabScroll)="nzTabListScroll.emit($event)"
         (selectFocusedIndex)="setSelectedIndex($event)"
@@ -203,6 +205,8 @@ export class NzTabSetComponent implements OnInit, AfterContentChecked, OnDestroy
     this.indexToSelect = coerceNumberProperty(value, null);
   }
   @Input() nzTabPosition: NzTabPosition = 'top';
+  @Input() nzTabBarTitleContent?: TemplateRef<void>;
+  @Input() nzTabBarActionsContent?: TemplateRef<void>;
   @Input() nzTabBarExtraContent?: TemplateRef<void>;
   @Input() nzCanDeactivate: NzTabsCanDeactivateFn | null = null;
   @Input() nzAddIcon: string | TemplateRef<NzSafeAny> = 'plus';
